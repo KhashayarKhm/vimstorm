@@ -17,6 +17,7 @@ Plug 'mattn/emmet-vim'
 
 " Linter
 Plug 'dense-analysis/ale'
+Plug 'neomake/neomake', { 'on': 'Neomake' }
 
 " Auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,6 +28,13 @@ Plug 'tpope/vim-commentary'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'heavenshell/ts-lehre'
 Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'carlitux/deoplete-ternjs'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 
@@ -66,6 +74,26 @@ syntax on
 
 " Variables and other configs
 highlight BadWhitespace ctermbg=red guibg=black
+
+" deoplete variables
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+
+" ternjs variables
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = [" — persistent"]
+
+" neomake variables
+let g:neomake_javascript_enabled_makers = ['eslint']
+
 " For Garbas snippet
 let g:snipMate = { 'snippet_version' : 1 }
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
